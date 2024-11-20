@@ -12,7 +12,7 @@ public class App {
     public static void main(String[] args) {
         // 람다식
         MyConsumer<Integer> r1 = (data) -> {
-            System.out.println("소비할 데이터: " + data);
+            System.out.println("소비할 데이터 r1: " + data);
         };
         r1.accept(1);
 
@@ -20,15 +20,14 @@ public class App {
         MySupplier<String> r2 =() -> {return "good";};
         MySupplier<String> r3 =() -> "good"; // return은 생략가능
         String msg = r3.get();
-        System.out.println(msg);
+        System.out.println("r3: " + msg);
 
         MyFunction<Integer, Double> r4 = (x) -> {
             return x / 1.5;
         };
-        System.out.println(r4.apply(3));
+        System.out.println("r2: " + r4.apply(3));
 
-        MyPredicate<Integer> r5 = (x) -> {
-            return true;
-        };
+        MyPredicate<Integer> r5 = integer -> integer % 2 == 0;
+        System.out.println("r5: " + r5.apply(1));
     }
 }
